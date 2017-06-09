@@ -1,4 +1,8 @@
+Run python file
+“Python file.py”
 
+Stop python file
+“Ctrl + C”
 
 
 https://docs.python.org/2/tutorial/datastructures.html
