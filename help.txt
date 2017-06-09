@@ -14,3 +14,12 @@ https://docs.python.org/2/tutorial/datastructures.html
 https://docs.python.org/2/library/functions.html#isinstance
 
 https://docs.python.org/2/library/string.html
+
+
+=======
+CV add:
+Python, Fask, Jinja2 templating
+
+MVC
+
+
