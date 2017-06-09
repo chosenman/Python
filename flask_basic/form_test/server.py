@@ -10,10 +10,19 @@ def index():
 @app.route('/users', methods=['POST'])
 def create_user():
    print "Got Post Info"
+   print request.form
    # we'll talk about the following two lines after we learn a little more
    # about forms
    name = request.form['name']
    email = request.form['email']
    # redirects back to the '/' route
-   return redirect('/')
+   # return redirect('/')
+   return render_template('success.html')
+
+@app.route('/users/<username>')
+def show_user_profile(username):
+	print username
+    return render_template("user.html")
+
+
 app.run(debug=True) # run our server
