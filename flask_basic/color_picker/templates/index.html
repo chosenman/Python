@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{message}}</title>
+	<meta charset="utf-8">
+</head>
+<body style="background:RGB( {{red}}, {{green}}, {{blue}})">
+<h1>{{message}}</h1>
+<div>
+	
+	<form action="/process" method="post">
+		Red <input type="" name="red"><br>
+		Green <input type="" name="green"><br>
+		Blue <input type="" name="blue"><br>
+		<span style="color:red">All values should be between 1 and 255</span><br>
+
+		<button type="submit">submit</button>
+	</form>
+
+</div>
+</body>
+</html>
