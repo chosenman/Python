@@ -4,6 +4,10 @@ Run python file
 Stop python file
 “Ctrl + C”
 
+exit from VIM
+Esc --> :q   ,   :x   ,   :wq
+:syntax on
+
 
 https://docs.python.org/2/tutorial/datastructures.html
 
