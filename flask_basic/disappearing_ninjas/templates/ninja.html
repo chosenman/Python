@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<img src="{{defimage}}" width="400" class="ninjas">
+<img src="{{ url_for('static', filename='') }}{{defimage}}" width="400" class="ninjas">
+
 <div class="stuff">
 	{{message}}
 </div>

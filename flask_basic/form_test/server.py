@@ -14,7 +14,7 @@ def create_user():
 	name = request.form['name']
 	email = request.form['email']
 
-	return render_template('success.html')
+	return render_template('success.html', name = name, email = email)
 
 @app.route('/users/<username>/<id>')
 def show_user_profile(username,id):
