@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Great Number Game</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+</head>
+<body>
+
+<div class="score">
+	Your gold: <span> {{session['total']}} </span>
+</div>
+
+
+
+	<div class="game-wrapper"  >
+
+
+			<form action="/process_money" method="post" class="form-group game">	
+			<h1>Farm</h1>
+			<p>earn 10-20 golds</p>
+				<input type="hidden" name="building" value="farm" />
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Find Gold</button>
+			</form>		
+			<form action="/process_money" method="post" class="form-group game">	
+			<h1>Cave</h1>
+			<p>earn 5-10 golds</p>
+				<input type="hidden" name="building" value="cave" />
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Find Gold</button>
+			</form>		
+			<form action="/process_money" method="post" class="form-group game">	
+			<h1>House</h1>
+			<p>earn 2-5 golds</p>
+				<input type="hidden" name="building" value="house" />
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Find Gold</button>
+			</form>		
+			<form action="/process_money" method="post" class="form-group game">	
+			<h1>Casino</h1>
+			<p>earn/takes 0-50 golds</p>
+				<input type="hidden" name="building" value="casino" />
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Find Gold</button>
+			</form>		
+
+	</div>
+
+
+<!-- 	{{session['randomnumber']}}<br>
+	{{session['guess']}} -->
+<script>
+
+</script>
+
+<style type="text/css">
+.score {
+	font-size: 1.5em;
+	padding:10px;
+}
+.score span {
+	border:1px solid black;
+	display: inline-block;
+	width:200px;
+	padding:10px;
+}
+body {
+	padding-top:30px;
+}
+.game-wrapper {
+	text-align: center;
+	  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+.game {
+	width:23%;
+	border:2px solid #ccc;
+	padding:5px;
+}
+</style>
+
+</body>
+</html>

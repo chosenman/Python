@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Great Number Game</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<style type="text/css">
+		body {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+
+	<h1>Great number game</h1>
+	<p>I am thinking a number between 1 and 100</p>
+	<p>Take a guess!</p>
+	<div class="{{session['div']}}" style="width:350px; margin:0 auto">
+		<p id="answer" class="{{session['div']}}">{{ session['answer'] }}</p>
+		<br><br>
+		<div class="form-group">
+			<form action="/process" method="post">	
+				<input type="hidden" name="action" value="takeguess">
+				<input type="number" name="guess" class="form-control"><br>
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Submit</button>
+
+			</form>		
+			<form action="/process" method="post">
+				<input type="hidden" name="action" value="reset">
+				<button type="submit" class="btn btn-primary btn-lg reset btn-danger" value='reset'>Reset</button>
+			</form>
+		</div>
+	</div>
+
+
+<!-- 	{{session['randomnumber']}}<br>
+	{{session['guess']}} -->
+<script>
+$("button").click(function() {
+  $( "#answer" ).hide();
+  // $( "#answer" ).fadeIn( "slow" );
+});
+</script>
+
+<style type="text/css">
+	.reset { display:none; }
+	p.low {
+		margin:0 auto;
+		background: red;
+		color:white;
+		font-size:2em;
+		display: block;
+		/*width: 200px;*/
+		height:200px;
+		line-height: 200px;
+		border:1px solid black;
+	}
+	div.green {
+		margin:0 auto;
+		background: green;
+		color:white;
+		font-size:2em;
+		display: block;
+		width: 350px;
+		padding-top:50px;
+		border:1px solid black;
+	}
+	div.green .sub, div.green .form-control {
+		display:none;
+	}
+	div.green .reset {
+		display:inline-block;
+	}
+</style>
+
+</body>
+</html>
