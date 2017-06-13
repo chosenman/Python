@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration form</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+</head>
+<body>
+
+<div class="registerform">
+<h1>Registration Form</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <p class="{{category}}">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+	<form action="/result" method="post" class="form-group">
+		
+		E-mail 
+		<input type="" name="email" value="your@email.com">
+
+		First Name 
+		<input type="" name="fname" value="Name">
+		Last Name 
+		<input type="" name="lname" value="lastname">
+		Password 
+		<input type="password" name="password">
+		Retype password 
+		<input type="password" name="repassword">
+		<br>
+		<button type="submit" class="btn btn-primary btn-lg sub">submit</button>
+	</form>
+
+</div>
+</body>
+<style type="">
+	.registerform input {
+		color:#999;
+	}
+	.registerform {
+		width:250px;
+		margin:0 auto;
+	}
+	.registerform input {
+		display: block;
+		width:250px;
+	}
+	.registerform span {
+		display:block;
+		width:250px;
+	}
+	.error {
+		color:red;
+	}
+	.success {
+		color:green;
+	}
+</style>
+</html>

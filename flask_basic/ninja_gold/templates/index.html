@@ -10,9 +10,14 @@
 
 <div class="score">
 	Your gold: <span> {{session['total']}} </span>
+
+
+			<form action="/process_money" method="post" style="display: inline-block;" >	
+				<input type="hidden" name="building" value="reset" />
+				<button type="submit" class="btn btn-primary btn-lg sub" value="submit">Reset</button>
+			</form>	
+
 </div>
-
-
 
 	<div class="game-wrapper"  >
 
@@ -44,11 +49,23 @@
 
 	</div>
 
+	<h3>Activities:</h3>
+	<div class="activities">
+      {% for key in session['log'] %}
+      	{% if key[1] == 'n':%}
+      		<p class="minus">
+      	{% else: %}
+      		<p class="plus">
+      	{% endif %}
+      		{{ key }}</p>
+      {% endfor %}
+	</div>
+
 
 <!-- 	{{session['randomnumber']}}<br>
 	{{session['guess']}} -->
 <script>
-
+$(".activities").
 </script>
 
 <style type="text/css">
@@ -63,7 +80,7 @@
 	padding:10px;
 }
 body {
-	padding-top:30px;
+	padding:30px 5px 5px 5px;
 }
 .game-wrapper {
 	text-align: center;
@@ -84,6 +101,19 @@ body {
 	width:23%;
 	border:2px solid #ccc;
 	padding:5px;
+}
+.activities {
+		border:2px solid #ccc;
+		padding:5px;
+		margin:10px;
+		height: 300px;
+		overflow: scroll;
+}
+.plus {
+	color:green;
+}
+.minus {
+	color:red;
 }
 </style>
 

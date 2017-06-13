@@ -11,7 +11,8 @@ def result():
 	name = request.form['name']
 	city = request.form['city']
 	text = request.form['text']
+	language = request.form['language']
 
-	return render_template('result.html',name=name, city=city, text=text)
+	return render_template('result.html',name=name, city=city, text=text, language=language)
 
 app.run(debug=True)

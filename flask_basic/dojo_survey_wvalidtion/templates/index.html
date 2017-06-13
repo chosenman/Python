@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{message}}</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<head>{{message}}</head>
+<div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color:red">{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+	<form action="/result" method="post">
+		Your Name: <input type="" name="name"><br>
+		Dojo Location: 
+		<select name="city">
+			<option value="San Jose">San Jose</option>
+			<option value="Los Angeles">Los Angeles</option>
+		</select><br>
+		Favorite Language: <select name="flanguage">
+			<option value="Python">Python</option>
+			<option value="JavaScript">JavaScript</option>
+		</select><br>
+		Comment(optional) <br>
+		<textarea name="text"></textarea><br>
+
+		<button type="submit">submit</button>
+	</form>
+
+</div>
+</body>
+</html>
