@@ -31,7 +31,7 @@ def result():
 	elif not EMAIL_REGEX.match(email):
 		flash("Invalid Email Address!", "error")
 		return redirect('/')
-	elif lname.isalpha() == False or lname.isalpha() == False:
+	elif lname.isalpha() == False or fname.isalpha() == False:
 		flash("Name and Last name should be alphabetical!", "error")
 		return redirect('/')
 	else:
