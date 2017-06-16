@@ -1,0 +1,11 @@
+Here is a cheat sheet for expressions you'll be using regularly:
+
+'^' Matches the following characters at the beginning of a string. Example: '^a' matches 'anna' but not 'banana'.
+
+'$' Matches the previous characters at the end of a string. Example: 'a$' matches 'anna' and 'banana' but not 'fan'.
+
+'[]' Matches any value in a range. Example: '[0-9]' matches '9' and '9s' but not 's9'.
+
+'{n}' Matches n number or more repetitions of the preceding pattern. Example: '[0-9]{2}' matches '91' and '9834' but not '9'
+
+\d and \w \d matches digits. \w matches characters. Example: "\d" matches "8" and "877x" but not "x989"
