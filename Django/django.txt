@@ -1,0 +1,12 @@
+If you're using Mac:
+
+> virtualenv djangoEnv
+> source djangoEnv/bin/activate
+(djangoEnv)>pip install Django==1.10
+Copy
+
+If you're using a PC:
+
+> python -m virtualenv djangoEnv
+> call djangoEnv/scripts/activate
+(djangoEnv)>pip install django

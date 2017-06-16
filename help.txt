@@ -1,3 +1,12 @@
+Speed up the video
+document.getElementsByTagName('video')[0].playbackRate = 1.5
+
+If there are multiple videos, they are indexed by order, so to accelerate the second one to 3x speed:
+
+document.getElementsByTagName('video')[1].playbackRate = 3
+
+
+
 Run python file
 “Python file.py”
 
@@ -21,5 +30,7 @@ CV add:
 Python, Fask, Jinja2 templating
 
 MVC
+
+./index.html - path in THE SAME FOLDER
 
 
