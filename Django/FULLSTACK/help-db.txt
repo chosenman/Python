@@ -1,0 +1,7 @@
+
+to see all ables
+Users._meta.db_table
+
+visualize tables
+https://github.com/django-extensions/django-extensions
+python manage.py graph_models -a -o myapp_models.png
