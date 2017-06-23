@@ -1,5 +1,8 @@
+python manage.py shell
 
-to see all ables
+from apps.{{app_name}}.models import {{table_name}}
+
+to see all tables
 Users._meta.db_table
 
 visualize tables
