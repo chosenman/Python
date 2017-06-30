@@ -10,7 +10,10 @@ urlpatterns = [
     url( r'^secrets$', views.secrets, name="secrets" ),
     url( r'^secrets/top$', views.top, name="top" ),
 
+    url( r'^like/(?P<id>\d+)$', views.like, name="like" ),
+
     url( r'^logout$', views.logout, name="logout" ),
 
     url( r'^deluser/(?P<id>\d+)$', views.deluser, name="deluser" ),
+    url( r'^delsecret/(?P<id>\d+)$', views.delsecret, name="delsecret" ),
 ]

@@ -11,32 +11,30 @@ from django.core.validators import validate_email
 todaySalt = ''
 todayDate = ''
 
+
 # Create your models here.
 class userManager(models.Manager):
-    def login(self,email,pw,salt):
+    def login(self,email,pw):
         e_mail = True
         pw_match = True
         empty = True
-
-        hashed_pw = bcrypt.hashpw(pw.encode(), salt)
-
-        # # DEBUG
-        # print "freshly hashed:"
-        # print hashed_pw
-        # print "from DB:"
-        # print User.objects.get(email=email).password
-        # DEBUG END
 
         user = ''
 
         if len(email) < 2 or len(pw) < 2:
             empty = False
-        elif len( User.objects.filter(email=email) ) == 0:
-            e_mail = False
-        elif User.objects.get(email=email).password.encode() != hashed_pw:
-            pw_match = False
         else:
-            user = User.objects.get(email=email)
+            query = User.objects.filter(email=email)
+            if len( query ) == 0:
+                e_mail = False
+            else:
+
+                db_hashed = query[0].password
+
+                if db_hashed != bcrypt.hashpw(pw.encode(), db_hashed.encode()):
+                    pw_match = False
+                else:
+                    user = User.objects.get(email=email)
 
         answer = {
             "email": e_mail,
@@ -93,40 +91,20 @@ class userManager(models.Manager):
 
         return answer
 
-    def mss(self, id):
-        checkToday = str(datetime.datetime.now().strftime('%D'))
-        global todayDate
-        global todaySalt
-
-        if todayDate != checkToday:
-            todayDate = checkToday
-            print todayDate
-            todaySalt = bcrypt.gensalt()
-            print todaySalt
-        # if
-
-    def esalt(self, id):
-        self.mss(id)
-        email = User.objects.get(id=id).email
-        return bcrypt.hashpw(email.encode(), todaySalt)
-        #  if expireTime != expireTime
-
-    def trueSession(self,id,key):
-        self.mss(id)
-        if len( User.objects.filter(id=id) ) > 0:
-            email = User.objects.get(id=id).email
-            hashedEmail = bcrypt.hashpw(email.encode(), todaySalt)
-            if key == hashedEmail:
-                return True
-            else:
-                return False
-
     def addSecret(self,secret,id):
-        if len(secret) > 0:
+        if len(secret) > 5:
             thisUser = User.objects.get(id=id)
             Secret.objects.create(secret=secret,author=thisUser)
+            return True
         else:
             return False
+
+    def addLike(self,id,user_id):
+        secret = Secret.objects.get(id=id)
+        user = User.objects.get(id=user_id)
+
+        user.liked.add(secret)
+
 
 class User(models.Model):
     fname = models.CharField(max_length=100)
@@ -143,5 +121,36 @@ class Secret(models.Model):
 
     likedBy = models.ManyToManyField(User, related_name="liked")
 
-    createdAt = models.DateField(auto_now_add=True)
-    updatedAt = models.DateField(auto_now=True)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updatedAt = models.DateTimeField(auto_now=True)
+
+
+
+
+    # def mss(self, id):
+    #     checkToday = str(datetime.datetime.now().strftime('%D'))
+    #     global todayDate
+    #     global todaySalt
+    #
+    #     if todayDate != checkToday:
+    #         todayDate = checkToday
+    #         print todayDate
+    #         todaySalt = bcrypt.gensalt()
+    #         print todaySalt
+    #     # if
+    #
+    # def esalt(self, id):
+    #     self.mss(id)
+    #     email = User.objects.get(id=id).email
+    #     return bcrypt.hashpw(email.encode(), todaySalt)
+    #     #  if expireTime != expireTime
+    #
+    # def trueSession(self,id,key):
+    #     self.mss(id)
+    #     if len( User.objects.filter(id=id) ) > 0:
+    #         email = User.objects.get(id=id).email
+    #         hashedEmail = bcrypt.hashpw(email.encode(), todaySalt)
+    #         if key == hashedEmail:
+    #             return True
+    #         else:
+    #             return False

@@ -37,3 +37,27 @@ NOTE: All our videos are using bash, but to use the same commands on Windows Com
   > python manage.py makemigrations
   > python manage.py migrate
 
+
+
+
+
+>>>>>> DEPLOY
+
+sudo service nginx restart
+sudo service gunicorn restart
+
+
+>>>>>> HARD PULLL
+
+Add to settings.py
+ALLOWED_HOSTS = [’54.67.124.107’,’localhost’]
+
+Add the deployment stuff to settings.py locally and + add commit + push all changes
+
+From ec2 (elastic computer cloud) instance 
+
+Git diff
+Git fetch —all
+Git reset —hard origin/master
+
+sudo service gunicorn restart
